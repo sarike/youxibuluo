@@ -1,9 +1,10 @@
-var express = require('express');
+var express = require('express'),
+    router = express.Router();
 
-var router = express.Router();
+var accountFilter = require("../filter/account");
 
-router.get('/', function(req, res) {
-  res.render('index', { title: 'Express' });
+router.get('/', accountFilter.authorize, function(req, res) {
+  res.render('admin/index');
 });
 
 module.exports = router;

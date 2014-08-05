@@ -7,8 +7,9 @@ var session = require('cookie-session');
 var bodyParser = require('body-parser');
 var dbUtil = require('dbutil');
 
-var frontend = require('./routes/frontend');
-var account = require('./routes/account');
+var frontend = require('./routes/frontend'),
+    account = require('./routes/account'),
+    admin = require('./routes/admin');
 
 // init dbUtil
 dbUtil.init({
@@ -37,6 +38,7 @@ app.use(session({
 
 app.use('/', frontend);
 app.use('/account', account);
+app.use('/admin', admin);
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {
